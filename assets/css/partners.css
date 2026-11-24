@@ -1,0 +1,18 @@
+/* "Companies we work with" strip: a slow, endless scroll of names under the hero.
+   Measured from the design recording: 25 px per second, right to left, no pause between loops. */
+.partners{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);padding:24px 0;overflow:hidden}
+.partners[hidden]{display:none}
+.partners-title{margin:0 0 23px;text-align:center;font:500 .625rem/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7c7b70}
+.partners-view{overflow:hidden}
+.partners-track{display:flex;width:max-content;animation:partners-scroll var(--dur,34s) linear infinite;will-change:transform}
+.partners-set{display:flex;flex:none}
+.partners-set span{flex:none;padding:0 19.7px;font:600 1.125rem/24px Inter,sans-serif;color:#5d7db9;white-space:nowrap;user-select:none}
+.partners:hover .partners-track,.partners:focus-within .partners-track{animation-play-state:paused}
+@keyframes partners-scroll{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--set,861px)))}}
+@media (prefers-reduced-motion:reduce){
+ .partners-track{animation:none;width:auto;justify-content:center;flex-wrap:wrap}
+ .partners-set[aria-hidden="true"]{display:none}
+ .partners-set{flex-wrap:wrap;justify-content:center}
+}
+@media (prefers-color-scheme:dark){.partners-title{color:#a9b6d9}.partners-set span{color:#8fa6d4}}
+@media print{.partners{display:none}}

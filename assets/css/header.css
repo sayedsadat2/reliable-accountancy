@@ -1,0 +1,23 @@
+/* Top bar, header, logo and navigation. */
+/* top bar + header */
+.topbar{background:var(--navy-d);color:#c9d3f2;font-size:.82rem}
+.topbar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.topbar a{text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.topbar a:hover{color:#fff;text-decoration:underline}
+.topbar .r{display:flex;gap:20px;flex-wrap:wrap}
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logo svg.mark{width:50px;height:46px;flex:none;--mk1:var(--ink);--mk2:var(--red)}
+.logo b{display:block;font:700 1.12rem/1.1 Inter,sans-serif;letter-spacing:-.02em}
+.logo small{display:block;font:500 .6rem Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.mk1{fill:var(--mk1)}.mk2{stroke:var(--mk2)}.mk2s{fill:var(--mk2)}
+@keyframes turn{0%{transform:perspective(220px) rotateY(0)}60%{transform:perspective(220px) rotateY(380deg)}100%{transform:perspective(220px) rotateY(360deg)}}
+.logo .mark{animation:turn 1.4s ease-out .5s 1;transition:transform .7s ease}
+.logo:hover .mark{transform:perspective(220px) rotateY(360deg)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:4px}
+nav a.l{display:block;padding:10px 11px;text-decoration:none;font:500 .9rem Inter,sans-serif;border-radius:6px}
+nav a.l:hover{color:var(--accent)}
+.menu{display:none;background:none;border:2px solid var(--line);border-radius:8px;width:44px;height:44px;color:var(--ink);cursor:pointer;align-items:center;justify-content:center}
+.menu .ic{width:24px;height:24px}
+

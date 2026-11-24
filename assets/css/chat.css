@@ -1,0 +1,70 @@
+/* Chat bubble and WhatsApp button (see assets/js/chat.js). Colours come from base.css. */
+.ra-dock{position:fixed;right:18px;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.ra-wa,.ra-launch{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:13px 20px;font:700 .92rem Inter,sans-serif;color:#fff;cursor:pointer;text-decoration:none;box-shadow:0 10px 28px rgba(11,35,82,.32);transition:transform .2s,background .2s}
+.ra-wa{background:#1f9d55}.ra-wa:hover{background:#178545;transform:translateY(-2px)}
+.ra-launch{background:var(--red)}.ra-launch:hover{background:#98191f;transform:translateY(-2px)}
+.ra-launch.on{background:var(--navy)}
+.ra-wa .ic,.ra-launch .ic{width:20px;height:20px}
+
+.ra-chat{position:absolute;right:0;bottom:calc(100% + 12px);width:min(380px,calc(100vw - 28px));height:min(600px,calc(100vh - 150px));display:flex;flex-direction:column;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 64px rgba(11,35,82,.35);overflow:hidden;animation:raPop .25s ease-out}
+.ra-chat[hidden]{display:none}
+@keyframes raPop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.ra-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--navy);color:#fff}
+.ra-av{width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;font:700 1.2rem "Source Serif 4",Georgia,serif;flex:none}
+.ra-who{flex:1;min-width:0}
+.ra-who b{display:block;font:700 1rem/1.2 Inter,sans-serif}
+.ra-who small{display:flex;align-items:center;gap:7px;font:500 .74rem Inter,sans-serif;color:#c4cff0;margin-top:2px}
+.ra-dot{width:8px;height:8px;border-radius:50%;background:#3ddc84;display:inline-block}
+.ra-x{background:none;border:0;color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;width:36px;height:36px;border-radius:8px}
+.ra-x:hover{background:rgba(255,255,255,.14)}
+
+.ra-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg);overscroll-behavior:contain}
+.ra-log.short{flex:0 0 74px;padding:10px 16px}
+.ra-m{max-width:86%;padding:10px 14px;border-radius:14px;font:400 .93rem/1.5 Inter,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere}
+.ra-m.b{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+.ra-m.u{align-self:flex-end;background:var(--red);color:#fff;border-bottom-right-radius:4px}
+.ra-typing{display:flex;gap:5px;align-items:center;padding:14px}
+.ra-typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:raDot 1s infinite ease-in-out}
+.ra-typing i:nth-child(2){animation-delay:.15s}.ra-typing i:nth-child(3){animation-delay:.3s}
+@keyframes raDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+
+.ra-qr{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 12px;background:var(--bg)}
+.ra-qr[hidden]{display:none}
+.ra-qr button{border:1.5px solid var(--red);color:var(--red);background:transparent;border-radius:999px;padding:7px 13px;font:600 .8rem Inter,sans-serif;cursor:pointer;transition:.15s}
+.ra-qr button:hover{background:var(--red);color:#fff}
+
+.ra-form{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line);background:var(--card)}
+.ra-form[hidden]{display:none}
+.ra-form input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;font:400 .95rem Inter,sans-serif;background:var(--bg);color:var(--ink)}
+.ra-form input:focus{outline:none;border-color:var(--navy)}
+.ra-send{width:44px;border:0;border-radius:10px;background:var(--red);color:#fff;cursor:pointer;display:grid;place-items:center}
+.ra-send:disabled{opacity:.5;cursor:default}
+.ra-send .ic{width:20px;height:20px}
+
+.ra-lead{padding:14px 16px;overflow-y:auto;border-top:1px solid var(--line);background:var(--card);flex:1}
+.ra-lead[hidden]{display:none}
+.ra-lead h3{font-size:1.1rem;margin:0 0 4px}
+.ra-lead p{margin:0 0 10px;font-size:.85rem;color:var(--muted)}
+.ra-lead label{display:block;font:600 .78rem Inter,sans-serif;margin:9px 0 4px}
+.ra-lead input,.ra-lead select,.ra-lead textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:9px 11px;font:400 .92rem Inter,sans-serif;background:var(--bg);color:var(--ink)}
+.ra-lead textarea{min-height:76px;resize:vertical}
+.ra-lead .ra-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.ra-lead-actions{display:flex;gap:10px;margin-top:14px}
+.ra-primary{flex:1;border:0;border-radius:8px;background:var(--red);color:#fff;padding:11px;font:700 .9rem Inter,sans-serif;cursor:pointer}
+.ra-primary:disabled{opacity:.6}
+.ra-ghost{border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:11px 14px;font:600 .88rem Inter,sans-serif;cursor:pointer}
+.ra-note{margin:10px 0 0!important;font-size:.78rem!important}
+.ra-note.err{color:var(--red)!important;font-weight:600}
+
+.ra-foot{padding:9px 14px 12px;background:var(--card);border-top:1px solid var(--line);font-size:.72rem;color:var(--muted)}
+.ra-foot p{margin:0 0 6px;line-height:1.4}
+.ra-links{display:flex;flex-wrap:wrap;gap:4px 14px}
+.ra-links a{font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+
+@media (max-width:620px){
+ .ra-wa span,.ra-launch span{display:none}
+ .ra-wa,.ra-launch{padding:14px}
+ .ra-chat{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 84px);width:auto;height:min(78vh,620px)}
+}
+@media (prefers-reduced-motion:reduce){.ra-chat,.ra-typing i{animation:none}}
+@media print{.ra-dock{display:none}}

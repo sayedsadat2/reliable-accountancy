@@ -1,0 +1,68 @@
+/* Home page hero: full-screen looping video, as in the original design.
+   Replace assets/video/hero.mp4 and assets/img/hero-poster.jpg to change the picture. */
+:root{--stack:115px}                    /* height of top bar + header; set by motion.js so the hero slides under them */
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:100vh;min-height:100svh;overflow:hidden;
+ background:#08183c;color:#fff;margin-top:calc(-1 * var(--stack))}
+.hero-poster,.hero-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(8,24,60,.92) 0%,rgba(8,24,60,.72) 45%,rgba(8,24,60,.2) 100%)}
+.hero-fade{position:absolute;left:0;right:0;bottom:0;height:7rem;z-index:-1;background:linear-gradient(to top,var(--bg),transparent)}
+.hero .wrap{position:relative;width:100%;padding-top:calc(var(--stack) + 56px);padding-bottom:80px}
+.hero-inner{max-width:42rem}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(243,246,255,.2);background:rgba(243,246,255,.1);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border-radius:999px;padding:6px 16px;font:500 .75rem Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#f3f6ff;margin-bottom:24px}
+.pill .ic{width:16px;height:16px;color:var(--pink)}
+.hero h1{font-size:3rem;line-height:1.05;font-weight:600;color:#fff;margin:0}
+.hero h1 em{color:var(--pink);font-weight:500}
+.hero .lead{margin:28px 0 0;max-width:36rem;font-size:1.125rem;line-height:1.625;color:#bcc6e2}
+.hero .cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.hero .btn{padding:15px 28px;font-size:.98rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:32rem;margin-top:56px;padding-top:32px;border-top:1px solid rgba(243,246,255,.15)}
+.stats dt,.stats dd{margin:0}
+.stats b{display:block;font:600 1.875rem/1.2 "Source Serif 4",Georgia,serif;color:#fff}
+.stats span{display:block;font:400 .75rem Inter,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#bcc6e2;margin-top:4px}
+@media (min-width:640px){.hero h1{font-size:3.75rem}}
+@media (min-width:1024px){.hero h1{font-size:4.5rem}}
+@media (max-width:700px){.hero-overlay{background:linear-gradient(180deg,rgba(8,24,60,.84),rgba(8,24,60,.8))}.hero .wrap{padding-top:calc(var(--stack) + 36px)}.stats{gap:14px}.stats b{font-size:1.6rem}}
+
+/* entrance animation (staggered) */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero .pill,.hero h1,.hero .lead,.hero .cta,.hero .stats{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{animation-delay:.12s}.hero .lead{animation-delay:.24s}.hero .cta{animation-delay:.36s}.hero .stats{animation-delay:.48s}
+
+/* header and top bar float over the hero, then turn solid once you scroll */
+.topbar{position:relative;z-index:55;background:rgba(8,24,60,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border-bottom:1px solid rgba(243,246,255,.1)}
+header.top{background:transparent;border-bottom:1px solid transparent;-webkit-backdrop-filter:none;backdrop-filter:none;transition:background .3s,box-shadow .3s,border-color .3s}
+header.top.sc{background:color-mix(in srgb,var(--bg) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(16,38,92,.12)}
+header.top:not(.sc) .logo{color:#fff}
+header.top:not(.sc) .logo svg.mark{--mk1:#fff}
+header.top:not(.sc) .logo small{color:#aebbe0}
+header.top:not(.sc) nav a.l{color:#e4eafb}
+header.top:not(.sc) .menu{border-color:rgba(255,255,255,.4);color:#fff}
+@media (max-width:1020px){nav a.l{color:var(--ink)!important}}
+
+/* visitors who ask their device for less motion get the still photo */
+@media (prefers-reduced-motion:reduce){.hero-video{display:none}.hero .pill,.hero h1,.hero .lead,.hero .cta,.hero .stats{animation:none}}
+@media print{.hero-video{display:none}}
+
+/* Glowing sun and stamp in the top-right corner, beside the header so it never covers the picture.
+   It pulses bigger and smaller, and fades between a golden sun and the Reliable Accountancy stamp.
+   To change it: edit the size, timings and position below, or delete the .hero-orb line in index.html to remove it. */
+.hero-orb{position:absolute;z-index:-1;right:clamp(16px,2.2vw,40px);top:calc(var(--stack) - 74px);width:clamp(64px,5.6vw,84px);aspect-ratio:1;pointer-events:none;animation:orb-pulse 7s ease-in-out infinite}
+.hero-orb span{position:absolute;inset:0;border-radius:50%}
+.hero-orb .halo{inset:-80%;background:radial-gradient(circle,rgba(255,226,150,.34) 0%,rgba(255,226,150,.14) 32%,rgba(255,226,150,0) 66%);animation:orb-halo 9s ease-in-out infinite}
+.hero-orb .sun{background:radial-gradient(circle at 50% 50%,#fff6c8 0%,#ffd45c 46%,#ff9f2e 100%);box-shadow:0 0 26px 8px rgba(255,200,80,.85),0 0 80px 24px rgba(255,160,40,.5);animation:orb-sun 14s ease-in-out infinite}
+.hero-orb .stamp{background:#fff;padding:6%;box-shadow:0 0 24px 6px rgba(255,240,190,.85),0 0 80px 22px rgba(255,200,90,.45);opacity:0;animation:orb-stamp 14s ease-in-out infinite}
+.hero-orb .stamp img{width:100%;height:100%;object-fit:contain;display:block;border-radius:50%}
+@keyframes orb-pulse{0%,100%{transform:scale(.88)}50%{transform:scale(1.12)}}
+@keyframes orb-sun{0%,28%{opacity:1}42%,92%{opacity:0}100%{opacity:1}}
+@keyframes orb-stamp{0%,28%{opacity:0}42%,78%{opacity:1}92%,100%{opacity:0}}
+@keyframes orb-halo{0%,100%{opacity:.55}50%{opacity:1}}
+@media (max-width:1100px){.hero-orb{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-orb,.hero-orb span{animation:none}.hero-orb .sun{opacity:0}.hero-orb .stamp{opacity:1}}
+
+/* Sun light: the whole page brightens softly while the sun is shining, then dims again as the sun fades into the stamp.
+   Same 14 s timing as the sun. To make it stronger or weaker change the three rgba(...) alpha numbers; delete the .sun-wash line in index.html to remove it. */
+.sun-wash{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:screen;
+ background:radial-gradient(ellipse 95% 85% at 92% 0%,rgba(255,214,120,.40) 0%,rgba(255,214,120,.20) 45%,rgba(255,214,120,.10) 100%);
+ animation:sun-wash 14s ease-in-out infinite}
+@keyframes sun-wash{0%,28%{opacity:1}42%,92%{opacity:0}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.sun-wash{display:none}}

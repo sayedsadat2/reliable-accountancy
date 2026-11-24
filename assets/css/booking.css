@@ -1,0 +1,29 @@
+/* Booking widget. */
+/* booking */
+.book{display:grid;grid-template-columns:.9fr 1.3fr;gap:52px;align-items:start}
+.book ul{padding-left:1.1em;margin:0 0 1em}.book li{margin-bottom:.3em}
+.bw{display:grid;grid-template-columns:1fr 1fr;background:var(--card);box-shadow:var(--shadow);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bc{background:var(--navy);color:#fff;padding:26px 16px}
+.av{width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:700 1.4rem Inter,sans-serif;margin:0 auto 8px}
+.bc h3{text-align:center;font:500 1.1rem Inter,sans-serif;margin:0}
+.mo{display:flex;justify-content:center;align-items:center;gap:8px;font:600 1rem Inter,sans-serif;margin:8px 0 14px}
+.mo button{background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer;padding:2px 12px;border-radius:6px}
+.mo button:disabled{opacity:.3;cursor:default}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font:600 .68rem Inter,sans-serif}
+.cal .dh{padding:6px 0;color:#a9b6d9}
+.cal button{aspect-ratio:1;border:0;border-radius:50%;background:transparent;color:#fff;font:600 .85rem Inter,sans-serif;cursor:pointer}
+.cal button:disabled{opacity:.3;cursor:default}
+.cal button.sel{background:#fff;color:#12306b}
+.cal button:not(:disabled):not(.sel):hover{background:rgba(255,255,255,.22)}
+.br{padding:22px 20px;font-size:.9rem;line-height:1.5}
+.br h4{margin:14px 0 6px;font:700 .85rem Inter,sans-serif;letter-spacing:0}.br h4:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{padding:7px 14px;border:2px solid var(--navy);border-radius:999px;background:transparent;color:var(--ink);font:600 .78rem Inter,sans-serif;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--navy);color:#fff}
+@media (prefers-color-scheme:dark){.chips button{border-color:var(--line)}.chips button[aria-pressed="true"]{background:var(--red);border-color:var(--red)}}
+.slots{max-height:230px;overflow:auto;display:grid;gap:8px;margin-top:10px;padding-right:6px}
+.slots button{padding:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:500 .88rem Inter,sans-serif;cursor:pointer;border-radius:6px}
+.slots button:hover{border-color:var(--red)}
+.slots button.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bk-form{grid-column:1/-1;border-top:1px solid var(--line);padding:22px;background:var(--cream)}
+

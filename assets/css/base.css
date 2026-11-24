@@ -1,0 +1,35 @@
+/* Design tokens, reset, typography, buttons. Change colours and fonts here. */
+:root{
+  --bg:#fffdf8;--ink:#10265c;--muted:#4d5a80;--cream:#f5efe1;--card:#ffffff;--line:#e2dcc9;
+  --navy:#12306b;--navy-d:#0b2352;--navy-ink:#f3f6ff;--red:#b3242b;--red-ink:#fff;--accent:#b3242b;--pink:#ff8d92;
+  --icon-bg:#e8edf8;--shadow:0 10px 34px rgba(16,38,92,.10);color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0a1330;--ink:#eef2ff;--muted:#a9b6d9;--cream:#0f1b40;--card:#14245a;--line:#2a3d73;
+  --navy:#0c1d4a;--navy-d:#07122f;--red:#c23038;--accent:#ff8d92;--icon-bg:#1d3262;--shadow:0 10px 34px rgba(0,0,0,.35);color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Source Serif 4",Georgia,serif;font-weight:600;line-height:1.14;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.5rem,5.4vw,4.2rem);font-weight:700}
+h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+h3{font-size:1.25rem}
+em{font-style:italic;color:var(--accent);font-weight:inherit}
+p{margin:0 0 1em}
+a{color:inherit}
+img,svg{max-width:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--red);color:#fff;padding:10px 16px;border-radius:8px;z-index:100;text-decoration:none;font-weight:600}
+.skip:focus{top:10px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.ic{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.kick{font:600 .75rem Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.lead{font-size:1.1rem;color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--red);border-radius:6px;padding:12px 24px;font:600 .92rem Inter,sans-serif;background:transparent;color:inherit;cursor:pointer;text-decoration:none;transition:.18s}
+.btn:hover{background:var(--red);color:#fff}
+.btn.solid{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(179,36,43,.28)}
+.btn.solid:hover{background:#98191f;border-color:#98191f}
+.btn.ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.btn.ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+.btn.sm{padding:9px 18px;font-size:.84rem}
+
